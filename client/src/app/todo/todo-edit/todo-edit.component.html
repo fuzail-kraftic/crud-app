@@ -1,0 +1,32 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+            <div [ngClass]="messageClass" *ngIf="message" role="alert">
+                {{ message }}
+              </div>
+
+            <form  (ngSubmit)="updateTodo()">
+                <input type="hidden" name="id" id="id" [(ngModel)]="todoObj.id">
+                <div class="form-group">
+                  <label for="Todo Task Title">Todo Task Title</label>
+                  <input type="text" class="form-control" name="title" id="name" [(ngModel)]="todoObj.task" aria-describedby="helpId" placeholder="">
+                </div>
+    
+                <div class="form-group">
+                  <label for="Status">Status</label>
+                  <select class="form-control" name="status" id="status" [(ngModel)]="todoObj.is_done">
+                    <option *ngFor="let doneObj of isDoneArr"  [ngValue]="doneObj.status">{{ doneObj.title }}</option>
+                  </select>
+                </div>
+    
+                <button type="submit" class="btn btn-primary">Save</button>
+              </form>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

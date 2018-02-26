@@ -1,0 +1,31 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let todo of todos; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ todo.task }}</td>
+            <td *ngIf="todo.is_done; else isDoneElse">Done</td>
+            <ng-template #isDoneElse>
+              <td>Not Done</td>
+            </ng-template>
+            <td>
+              <a [routerLink]="['/todo-edit', todo.id]" class="btn btn-sm btn-primary">Edit</a>
+              <a (click)="deleteTodo(todo.id)" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
